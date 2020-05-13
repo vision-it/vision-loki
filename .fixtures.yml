@@ -1,0 +1,14 @@
+---
+fixtures:
+  repositories:
+    stdlib:
+      ref: "v6.2.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    archive:
+      ref: "v4.4.0"
+      repo: "https://github.com/voxpupuli/puppet-archive"
+    apt:
+      ref: "v7.1.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-apt"
+  symlinks:
+    vision_loki: '#{source_dir}'

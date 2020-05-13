@@ -1,0 +1,32 @@
+---
+vision_loki::server::version: 'lastest'
+vision_loki::server::docker::version: 'lastest'
+
+vision_loki::logsync::jobs:
+  foobar:
+    target_dir: '/tmp/log'
+    source_dir: '/var/log'
+    interval: '1h'
+  barfoo:
+    target_dir: '/tmp/barfoo'
+    source_dir: '/var/log'
+
+vision_loki::promtail::password: 'foobar'
+vision_loki::promtail::config:
+  clients:
+    - url: 'https://localhost/api/prom/push'
+      basic_auth:
+        username: '1234'
+        password_file: '/etc/promtail/.gc_pw'
+  positions:
+    filename: '/tmp/positions.yaml'
+  scrape_configs:
+    - job_name: 'system_secure'
+      entry_parser: 'raw'
+      static_configs:
+      - targets:
+          - 'localhost'
+        labels:
+          job: 'var_log_secure'
+          host: "%{facts.networking.fqdn}"
+          __path__: '/var/log/secure'

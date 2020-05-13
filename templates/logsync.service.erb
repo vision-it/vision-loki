@@ -1,0 +1,13 @@
+# This file is managed by Puppet
+[Unit]
+Description=<%= @service %> Timer
+After=network.target
+
+[Service]
+ExecStart=<%= @command_file %>
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target

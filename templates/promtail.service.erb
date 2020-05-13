@@ -1,0 +1,13 @@
+# This file is managed by Puppet
+[Unit]
+Description=Promtail
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/promtail-linux-amd64 -config.file /etc/promtail/config.yaml
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target

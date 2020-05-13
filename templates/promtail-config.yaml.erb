@@ -1,0 +1,11 @@
+# This file is managed by Puppet
+<% require 'yaml' -%>
+<% global_config = scope.lookupvar('vision_loki::promtail::config') -%>
+<% full_config = {
+  'global'=>global_config,
+  }
+-%>
+
+<%=
+full_config.to_yaml().gsub(/source_labels: ".+?"/) { |x| x.gsub('"', '') }
+-%>

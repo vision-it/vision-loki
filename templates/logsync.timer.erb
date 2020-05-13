@@ -1,0 +1,10 @@
+# This file is managed by Puppet
+[Unit]
+Description=<%= @service %> Timer
+
+[Timer]
+OnActiveSec=120s
+OnUnitActiveSec=<%= @interval %>
+
+[Install]
+WantedBy=basic.target

@@ -1,0 +1,5 @@
+# This file is managed by Puppet
+
+set -e
+
+rsync -rpz --inplace --no-whole-file --exclude '*.gz' <%= @source_dir %> <%= @target_dir %>
