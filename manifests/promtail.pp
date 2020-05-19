@@ -4,6 +4,10 @@
 # Parameters
 # ----------
 #
+# @param config Content of config.yaml as Hash
+# @param version Version to download
+# @param checksum Sha256 of downloaded file
+#
 # Examples
 # --------
 #
@@ -13,8 +17,9 @@
 
 class vision_loki::promtail (
 
-  Hash $config,
-  String $checksum = 'b94dd911948277b87d6daef50cfbb299f4007e082849c5327fe96239d740ecef',
+  Hash   $config,
+  String $version,
+  String $checksum,
 
 ) {
 
@@ -38,7 +43,7 @@ class vision_loki::promtail (
   # Install
   archive { "/tmp/promtail.zip":
     ensure        => present,
-    source        => 'https://github.com/grafana/loki/releases/download/v1.4.1/promtail-linux-amd64.zip',
+    source        => "https://github.com/grafana/loki/releases/download/${version}/promtail-linux-amd64.zip",
     extract       => true,
     extract_path  => '/usr/local/bin/',
     creates       => '/usr/local/bin/promtail-linux-amd64',
@@ -63,5 +68,4 @@ class vision_loki::promtail (
       File['/etc/promtail/config.yaml'],
     ],
   }
-
 }
