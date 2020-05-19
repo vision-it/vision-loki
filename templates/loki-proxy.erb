@@ -1,0 +1,10 @@
+# This file is managed by Puppet
+server {
+  listen 80;
+  error_log /var/log/nginx/loki-error.log;
+
+  location /loki/push {
+    proxy_pass http://localhost:3100/loki/api/v1/push;
+    proxy_set_header Authorization "<%= @auth %>";
+  }
+}

@@ -1,6 +1,7 @@
 ---
 vision_loki::server::version: 'lastest'
 vision_loki::server::docker::version: 'lastest'
+vision_loki::server::proxy::auth: 'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ=='
 
 vision_loki::logsync::jobs:
   foobar:
@@ -11,13 +12,12 @@ vision_loki::logsync::jobs:
     target_dir: '/tmp/barfoo'
     source_dir: '/var/log'
 
-vision_loki::promtail::password: 'foobar'
 vision_loki::promtail::config:
   clients:
     - url: 'https://localhost/api/prom/push'
       basic_auth:
         username: '1234'
-        password_file: '/etc/promtail/.gc_pw'
+        password: 'foobar'
   positions:
     filename: '/tmp/positions.yaml'
   scrape_configs:

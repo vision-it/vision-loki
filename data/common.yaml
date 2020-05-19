@@ -1,2 +1,4 @@
 ---
-vision_loki::param: true
+lookup_options:
+  'vision_loki::server::proxy::auth':
+    convert_to: 'Sensitive'

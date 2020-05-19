@@ -4,6 +4,9 @@ fixtures:
     stdlib:
       ref: "v6.2.0"
       repo: "https://github.com/puppetlabs/puppetlabs-stdlib"
+    docker:
+      ref: "v3.7.0"
+      repo: "https://github.com/puppetlabs/puppetlabs-docker"
     archive:
       ref: "v4.4.0"
       repo: "https://github.com/voxpupuli/puppet-archive"
