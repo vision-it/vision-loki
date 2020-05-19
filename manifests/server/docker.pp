@@ -21,13 +21,13 @@ class vision_loki::server::docker (
 
   ::docker::image { 'loki':
     ensure    => present,
-    image     => 'loki/loki',
+    image     => 'grafana/loki',
     image_tag => $version,
     require   => Class['vision_docker']
   }
 
   ::docker::run { 'loki':
-    image   => "loki/loki:${version}",
+    image   => "grafana/loki:${version}",
     ports   => [ '3100:3100' ],
     command => '-config.file=/etc/loki/config.yaml',
     volumes => [
