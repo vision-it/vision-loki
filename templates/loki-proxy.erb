@@ -3,12 +3,18 @@ server {
   listen 80;
   error_log /var/log/nginx/loki-error.log;
 
-  location /loki {
+  location / {
     proxy_pass http://localhost:3100;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
   }
 
   location /loki/push {
     proxy_pass http://localhost:3100/loki/api/v1/push;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     auth_basic "Restricted";
     auth_basic_user_file /etc/nginx/.htpasswd;
   }
