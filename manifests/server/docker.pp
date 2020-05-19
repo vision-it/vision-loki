@@ -28,7 +28,7 @@ class vision_loki::server::docker (
 
   ::docker::run { 'loki':
     image   => "grafana/loki:${version}",
-    ports   => [ '3100:3100' ],
+    ports   => [ '127.0.0.1:3100:3100' ],
     command => '-config.file=/etc/loki/config.yaml',
     volumes => [
       '/vision/data/loki/data/:/var/lib/loki',

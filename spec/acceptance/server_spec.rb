@@ -4,8 +4,12 @@ describe 'vision_loki::server' do
   context 'with defaults' do
     it 'run idempotently' do
       pp = <<-FILE
-        file { ['/vision', '/vision/data/']:
+        file { ['/vision', '/vision/data/', '/vision/pki']:
           ensure => directory,
+        }
+
+        # Generate dummy certs and ca
+            exec { '/bin/bash /etc/puppetlabs/code/modules/vision_loki/files/testing/gencrt.sh':
         }
 
         # Mock
