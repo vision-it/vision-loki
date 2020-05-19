@@ -3,7 +3,9 @@
 <% global_config = scope.lookupvar('vision_loki::promtail::config') -%>
 <% scrape_configs = scope.lookupvar('vision_loki::promtail::scrape_configs') -%>
 <% full_config = {
-  'global'=>global_config,
+  'server'=>global_config['server'],
+  'clients'=>global_config['clients'],
+  'positions'=>global_config['positions'],
   'scrape_configs'=>scrape_configs
   }
 -%>
