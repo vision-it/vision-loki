@@ -3,6 +3,10 @@ server {
   listen 80;
   error_log /var/log/nginx/loki-error.log;
 
+  location /loki {
+    proxy_pass http://localhost:3100;
+  }
+
   location /loki/push {
     proxy_pass http://localhost:3100/loki/api/v1/push;
     auth_basic "Restricted";
