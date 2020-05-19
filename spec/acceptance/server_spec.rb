@@ -23,6 +23,10 @@ describe 'vision_loki::server' do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
     end
+    describe file('/etc/nginx/.htpasswd') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'aHR0cHM6L' }
+    end
     describe file('/etc/nginx/sites-enabled/default') do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
