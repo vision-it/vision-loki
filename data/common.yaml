@@ -2,6 +2,17 @@
 vision_loki::promtail::version: 'v1.4.1'
 vision_loki::promtail::checksum: 'b94dd911948277b87d6daef50cfbb299f4007e082849c5327fe96239d740ecef'
 
+vision_loki::promtail::scrape_configs:
+  - job_name: 'system'
+    entry_parser: 'raw'
+    static_configs:
+    - targets:
+        - 'localhost'
+      labels:
+        job: 'var_log'
+        host: "%{facts.networking.fqdn}"
+        __path__: '/var/log/*log'
+
 lookup_options:
   'vision_loki::server::proxy::auth':
     convert_to: 'Sensitive'

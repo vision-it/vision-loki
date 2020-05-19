@@ -5,6 +5,7 @@
 # ----------
 #
 # @param config Content of config.yaml as Hash
+# @param scrape_configs Array of scrape_config Hashes
 # @param version Version to download
 # @param checksum Sha256 of downloaded file
 #
@@ -18,6 +19,7 @@
 class vision_loki::promtail (
 
   Hash   $config,
+  Array  $scrape_configs,
   String $version,
   String $checksum,
 

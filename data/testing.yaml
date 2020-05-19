@@ -20,13 +20,13 @@ vision_loki::promtail::config:
         password: 'foobar'
   positions:
     filename: '/tmp/positions.yaml'
-  scrape_configs:
-    - job_name: 'system_secure'
-      entry_parser: 'raw'
-      static_configs:
-      - targets:
-          - 'localhost'
-        labels:
-          job: 'var_log_secure'
-          host: "%{facts.networking.fqdn}"
-          __path__: '/var/log/secure'
+vision_loki::promtail::scrape_configs:
+  - job_name: 'system_secure'
+    entry_parser: 'raw'
+    static_configs:
+    - targets:
+        - 'localhost'
+      labels:
+        job: 'var_log_secure'
+        host: "%{facts.networking.fqdn}"
+        __path__: '/var/log/secure'
