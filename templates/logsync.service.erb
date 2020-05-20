@@ -5,7 +5,7 @@ After=network.target
 
 [Service]
 ExecStart=<%= @command_file %>
-ProtectHome=true
+ProtectHome=read-only
 ProtectKernelTunables=true
 ProtectSystem=full
 
