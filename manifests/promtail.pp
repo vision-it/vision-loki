@@ -40,6 +40,7 @@ class vision_loki::promtail (
     group   => 'root',
     content => template('vision_loki/promtail-config.yaml.erb'),
     require => File['/etc/promtail'],
+    notify  => Service['promtail'],
   }
 
   # Install
