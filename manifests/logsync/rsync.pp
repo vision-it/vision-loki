@@ -34,6 +34,7 @@ define vision_loki::logsync::rsync (
   # Command to execute
   file { $command_file:
     ensure  => present,
+    mode    => '0770',
     content => template('vision_loki/logsync.sh.erb'),
   }
 
