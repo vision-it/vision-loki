@@ -19,6 +19,5 @@ class vision_loki::server (
 
   contain vision_loki::server::docker
   contain vision_loki::server::config
-  contain vision_loki::server::proxy
 
 }
