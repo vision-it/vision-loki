@@ -21,10 +21,6 @@ class vision_loki::logsync (
 
 ) {
 
-  package { 'rsync':
-    ensure => present,
-  }
-
   create_resources('vision_loki::logsync::rsync', $jobs)
 
 }
