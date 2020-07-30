@@ -44,7 +44,7 @@ class vision_loki::promtail (
   }
 
   # Install
-  archive { "/tmp/promtail.zip":
+  archive { '/tmp/promtail.zip':
     ensure        => present,
     source        => "https://github.com/grafana/loki/releases/download/${version}/promtail-linux-amd64.zip",
     extract       => true,
