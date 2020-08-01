@@ -1,8 +1,12 @@
 ---
-vision_loki::promtail::version: 'v1.4.1'
-vision_loki::promtail::checksum: 'b94dd911948277b87d6daef50cfbb299f4007e082849c5327fe96239d740ecef'
+vision_loki::server::version: 'v1.5.0'
+vision_loki::server::checksum: '00b4f134d8e54ce4dfb1ce71ffff3e5505202fa13625ec96cec75d44b816ed34'
 
-vision_loki::promtail::scrape_configs:
+vision_loki::client::version: 'v1.5.0'
+vision_loki::client::checksum: '6695ea8d0c831c0ccab3abfac9e3bdf065e83887d540583b8e28644168ca038c'
+
+vision_loki::client::server_address: 'http://loki.service.consul:3100/api/prom/push'
+vision_loki::client::scrape_configs:
   - job_name: 'system'
     entry_parser: 'raw'
     static_configs:

@@ -17,6 +17,6 @@ mod 'vision_loki',
 Include in a role/profile:
 
 ```puppet
-contain ::vision_loki
+contain ::vision_loki::server
+contain ::vision_loki::client
 ```
-

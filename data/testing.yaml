@@ -1,18 +1,5 @@
 ---
-vision_loki::server::version: 'lastest'
-vision_loki::server::docker::version: 'lastest'
-vision_loki::server::proxy::auth: 'aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g/dj1kUXc0dzlXZ1hjUQ=='
-
-vision_loki::logsync::jobs:
-  foobar:
-    target_dir: '/tmp/log'
-    source_dir: '/var/log'
-    interval: '1h'
-  barfoo:
-    target_dir: '/tmp/barfoo'
-    source_dir: '/var/log'
-
-vision_loki::promtail::config:
+vision_loki::client::config:
   server:
     http_listen_port: 9080
     grpc_listen_port: 0
@@ -23,7 +10,7 @@ vision_loki::promtail::config:
         password: 'foobar'
   positions:
     filename: '/tmp/positions.yaml'
-vision_loki::promtail::scrape_configs:
+vision_loki::client::scrape_configs:
   - job_name: 'system_secure'
     entry_parser: 'raw'
     static_configs:
