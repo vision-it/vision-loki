@@ -32,7 +32,7 @@ describe 'vision_loki::client' do
       it { is_expected.to exist }
     end
   end
-  context 'installed' do
+  context 'promtail installed' do
     describe file('/usr/local/bin/promtail-linux-amd64') do
       it { is_expected.to exist }
     end

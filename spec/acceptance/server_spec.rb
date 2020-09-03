@@ -17,9 +17,17 @@ describe 'vision_loki::server' do
       apply_manifest(pp, catch_failures: false)
     end
   end
-
+  context 'loki installed' do
+    describe file('/usr/local/bin/loki-linux-amd64') do
+      it { is_expected.to exist }
+    end
+  end
   context 'config deployed' do
-    describe file('/vision/data/loki/config.yaml') do
+    describe file('/etc/loki/config.yaml') do
+      it { is_expected.to exist }
+      its(:content) { is_expected.to match 'Puppet' }
+    end
+    describe file('/etc/systemd/system/loki.service') do
       it { is_expected.to exist }
       its(:content) { is_expected.to match 'Puppet' }
     end
