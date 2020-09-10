@@ -20,3 +20,7 @@ vision_loki::client::scrape_configs:
 lookup_options:
   'vision_loki::server::proxy::auth':
     convert_to: 'Sensitive'
+  'vision_loki::client::scrape_configs':
+    merge:
+      strategy: deep
+      merge_hash_arrays: true
