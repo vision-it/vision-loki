@@ -27,7 +27,7 @@ class vision_loki::client (
 
   contain archive
 
-  # Install
+  # Install via GitHub Binary
   archive { '/tmp/promtail.zip':
     ensure        => present,
     source        => "https://github.com/grafana/loki/releases/download/${version}/promtail-linux-amd64.zip",
@@ -39,13 +39,15 @@ class vision_loki::client (
     cleanup       => false,
   }
 
-  # Config
+  # Create Config directories
   file { ['/etc/promtail', '/var/lib/promtail']:
     ensure => directory,
     owner  => 'root',
     group  => 'root',
   }
 
+  # Hint: The template transforms the scrape_config from Hiera to Yaml.
+  # Seemed easier at the time, than to pass all individual parameters.
   file { '/etc/promtail/config.yaml':
     ensure  => present,
     owner   => 'root',
@@ -55,7 +57,7 @@ class vision_loki::client (
     notify  => Service['promtail'],
   }
 
-  # Service
+  # Systemd Service Unit
   file { '/etc/systemd/system/promtail.service':
     ensure  => present,
     content => file('vision_loki/promtail.service'),

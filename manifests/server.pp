@@ -4,11 +4,14 @@
 # Parameters
 # ----------
 #
+# @param version Version to download
+# @param checksum Sha256 of downloaded file
+#
 # Examples
 # --------
 #
 # @example
-# contain ::vision_loki
+# contain ::vision_loki::server
 #
 
 class vision_loki::server (
@@ -20,7 +23,7 @@ class vision_loki::server (
 
   contain archive
 
-  # Install
+  # Install via GitHub Binary
   archive { '/tmp/loki.zip':
     ensure        => present,
     source        => "https://github.com/grafana/loki/releases/download/${version}/loki-linux-amd64.zip",
@@ -32,21 +35,21 @@ class vision_loki::server (
     cleanup       => false,
   }
 
-  # Config
+  # Config directory
   file { ['/etc/loki']:
     ensure => directory,
     owner  => 'root',
     group  => 'root',
   }
 
-  # General settings
+  # General server settings
   file { '/etc/loki/config.yaml':
     content => file('vision_loki/loki-config.yaml'),
     require => File['/etc/loki'],
     notify  => Service['loki'],
   }
 
-  # Service
+  # Systemd Service Unit
   file { '/etc/systemd/system/loki.service':
     ensure  => present,
     content => file('vision_loki/loki.service'),
