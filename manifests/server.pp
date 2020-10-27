@@ -29,7 +29,6 @@ class vision_loki::server (
     source        => "https://github.com/grafana/loki/releases/download/${version}/loki-linux-amd64.zip",
     extract       => true,
     extract_path  => '/usr/local/bin/',
-    creates       => '/usr/local/bin/loki-linux-amd64',
     checksum      => $checksum,
     checksum_type => 'sha256',
     cleanup       => false,
@@ -57,13 +56,13 @@ class vision_loki::server (
   }
 
   service { 'loki':
-    ensure   => running,
-    enable   => true,
-    provider => 'systemd',
-    require  => [
+    ensure    => running,
+    enable    => true,
+    provider  => 'systemd',
+    subscribe => Archive['/tmp/loki.zip'],
+    require   => [
       File['/etc/systemd/system/loki.service'],
       File['/etc/loki/config.yaml'],
     ],
   }
-
 }

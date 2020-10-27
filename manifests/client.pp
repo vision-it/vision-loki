@@ -33,7 +33,6 @@ class vision_loki::client (
     source        => "https://github.com/grafana/loki/releases/download/${version}/promtail-linux-amd64.zip",
     extract       => true,
     extract_path  => '/usr/local/bin/',
-    creates       => '/usr/local/bin/promtail-linux-amd64',
     checksum      => $checksum,
     checksum_type => 'sha256',
     cleanup       => false,
@@ -65,10 +64,11 @@ class vision_loki::client (
   }
 
   service { 'promtail':
-    ensure   => running,
-    enable   => true,
-    provider => 'systemd',
-    require  => [
+    ensure    => running,
+    enable    => true,
+    provider  => 'systemd',
+    subscribe => Archive['/tmp/promtail.zip'],
+    require   => [
       File['/etc/systemd/system/promtail.service'],
       File['/etc/promtail/config.yaml'],
     ],
