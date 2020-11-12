@@ -4,8 +4,8 @@
 # Parameters
 # ----------
 #
-# @param config Content of config.yaml as Hash
 # @param scrape_configs Array of scrape_config Hashes
+# @param server_address address of loki server
 # @param version Version to download
 # @param checksum Sha256 of downloaded file
 #
