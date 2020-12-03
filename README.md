@@ -1,6 +1,6 @@
 # vision-loki
 
-[![Build Status](https://travis-ci.org/vision-it/vision-loki.svg?branch=production)](https://travis-ci.org/vision-it/vision-loki)
+[![Build Status](https://travis-ci.com/vision-it/vision-loki.svg?branch=production)](https://travis-ci.com/vision-it/vision-loki)
 
 ## Usage
 
