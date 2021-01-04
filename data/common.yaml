@@ -1,9 +1,9 @@
 ---
-vision_loki::server::version: 'v2.0.0'
-vision_loki::server::checksum: '9b6bcd17201bc0cddd00c114782071b6ff8bd6bb09917887fd92643499dc3b2c'
+vision_loki::server::version: 'v2.1.0'
+vision_loki::server::checksum: '56fb84575184f858babd997ec1c4a188771eaf4313e7ee9d631933d254a1979b'
 
-vision_loki::client::version: 'v2.0.0'
-vision_loki::client::checksum: 'd37e94e6ce0604f9faea7738f9c35d83afbdca9e5e92537600764a3b18cfe088'
+vision_loki::client::version: 'v2.1.0'
+vision_loki::client::checksum: '31ab57cd206f575e493755607e8f6163f3e860b9d176f10404d537fc1197835c'
 
 vision_loki::client::server_address: 'http://loki.service.consul:3100/api/prom/push'
 vision_loki::client::scrape_configs:
