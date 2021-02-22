@@ -1,8 +1,6 @@
 # vision-loki
 
-[![Build Status](https://travis-ci.org/vision-it/vision-loki.svg?branch=development)](https://travis-ci.org/vision-it/vision-loki)
-
-## Parameter
+[![Build Status](https://travis-ci.com/vision-it/vision-loki.svg?branch=production)](https://travis-ci.com/vision-it/vision-loki)
 
 ## Usage
 
@@ -17,6 +15,6 @@ mod 'vision_loki',
 Include in a role/profile:
 
 ```puppet
-contain ::vision_loki
+contain ::vision_loki::server
+contain ::vision_loki::client
 ```
-

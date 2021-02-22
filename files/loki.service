@@ -1,0 +1,13 @@
+# This file is managed by Puppet
+[Unit]
+Description=Loki
+After=syslog.target network.target
+
+[Service]
+ExecStart=/usr/local/bin/loki-linux-amd64 -config.file /etc/loki/config.yaml
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectSystem=full
+
+[Install]
+WantedBy=default.target

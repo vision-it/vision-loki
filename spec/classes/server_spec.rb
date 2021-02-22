@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'hiera'
 
@@ -6,13 +8,6 @@ describe 'vision_loki::server' do
     context "on #{os}" do
       let(:facts) do
         facts
-      end
-
-      let :pre_condition do
-        [
-          'class vision_docker () {}',
-          'class vision_loki::server::docker () {}',
-        ]
       end
 
       context 'compile' do

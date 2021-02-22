@@ -1,9 +1,9 @@
 {
   "name": "vision_loki",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": "vision-it",
-  "source": "",
-  "summary": "",
+  "source": "https://github.com/vision-it/",
+  "summary": "Profile for Loki Logserver",
   "license": "Apache-2.0",
   "dependencies": [],
   "operatingsystem_support": [

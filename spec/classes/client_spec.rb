@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'spec_helper'
 require 'hiera'
 
-describe 'vision_loki::promtail' do
+describe 'vision_loki::client' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) do

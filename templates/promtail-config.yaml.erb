@@ -1,15 +1,16 @@
 # This file is managed by Puppet
 <% require 'yaml' -%>
-<% global_config = scope.lookupvar('vision_loki::promtail::config') -%>
-<% scrape_configs = scope.lookupvar('vision_loki::promtail::scrape_configs') -%>
+<% scrape_configs = scope.lookupvar('vision_loki::client::scrape_configs') -%>
 <% full_config = {
-  'server'=>global_config['server'],
-  'clients'=>global_config['clients'],
-  'positions'=>global_config['positions'],
   'scrape_configs'=>scrape_configs
   }
 -%>
+<%= full_config.to_yaml().gsub(/source_labels: ".+?"/) { |x| x.gsub('"', '') } -%>
 
-<%=
-full_config.to_yaml().gsub(/source_labels: ".+?"/) { |x| x.gsub('"', '') }
--%>
+server:
+  http_listen_port: 9080
+  grpc_listen_port: 0
+clients:
+  - url: <%= @server_address %>
+positions:
+  filename: "/var/lib/promtail/positions.yaml"

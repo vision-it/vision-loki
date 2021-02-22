@@ -1,6 +1,0 @@
-#!/usr/bin/env bash
-# This file is managed by Puppet
-
-set -e
-
-rsync -rpz --inplace --no-whole-file --exclude '*.gz' --exclude '*.1' <%= @source_dir %> <%= @target_dir %>
