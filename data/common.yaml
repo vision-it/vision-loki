@@ -17,8 +17,6 @@ vision_loki::client::scrape_configs:
         __path__: '/var/log/*log'
 
 lookup_options:
-  'vision_loki::server::proxy::auth':
-    convert_to: 'Sensitive'
   'vision_loki::client::scrape_configs':
     merge:
       strategy: deep
